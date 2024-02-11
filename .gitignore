@@ -1,0 +1,23 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/WeatherApp.Api/bin
+/WeatherApp.Api/obj
+/WeatherApp.Api/Properties/PublishProfiles
+/weatherapp.client/obj/Debug
+/WeatherApp.DataAccessLayer/bin
+/WeatherApp.DataAccessLayer/obj
+/WeatherApp.DataAccessLayer.Test/bin/Debug/net6.0
+/WeatherApp.DataAccessLayer.Test/obj
+/WeatherApp.DataFetcher/bin/Debug/net6.0
+/WeatherApp.DataFetcher/obj
+/WeatherApp.Domain/bin
+/WeatherApp.Domain/obj
+/WeatherApp.Server/bin/Debug/net6.0
+/WeatherApp.Server/obj
+/WeatherApp.Service/bin
+/WeatherApp.Service/obj
+/WeatherApp.Service.Test/bin/Debug/net6.0
+/WeatherApp.Service.Test/obj
