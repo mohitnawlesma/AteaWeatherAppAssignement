@@ -34,11 +34,11 @@ namespace WeatherApp.Service.Test
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<CityWeatherDetail, CityWeatherDetailDto>());
             var mapper = config.CreateMapper();
-            _repository.GetWeatherDetails("Latvia").Returns(new List<CityWeatherDetail>() { new CityWeatherDetail() { Country = "Latvia", Temperature = (decimal)-8.101 } });
+            _repository.GetWeatherDetails("Riga", "Latvia").Returns(new List<CityWeatherDetail>() { new CityWeatherDetail() { Country = "Latvia", Temperature = (decimal)-8.101 } });
             _mapper.Map<List<CityWeatherDetailDto>>(new List<CityWeatherDetail>() { new CityWeatherDetail() { Country = "Latvia", Temperature = (decimal)-8.101 } }).Returns(new List<CityWeatherDetailDto>() { new CityWeatherDetailDto() { Country = "Latvia", Temperature = (decimal)-8.101 } });
             
             var service = new WeatherDetailService(_logger, mapper, _repository, _configuration);
-            var result = service.GetCityWeatherDetails("Latvia");
+            var result = service.GetCityWeatherDetails("Riga","Latvia");
            
             result.Count.Should().Be(1);
             result.First().Country.Should().Be("Latvia");
@@ -49,10 +49,10 @@ namespace WeatherApp.Service.Test
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<CityWeatherDetail, CityWeatherDetailDto>());
             var mapper = config.CreateMapper();
-            _repository.GetWeatherDetails("Latvia").Returns(x => { throw new Exception(); });
+            _repository.GetWeatherDetails("Riga", "Latvia").Returns(x => { throw new Exception(); });
              
             var service = new WeatherDetailService(_logger, mapper, _repository, _configuration);
-            var result = service.GetCityWeatherDetails("Latvia");
+            var result = service.GetCityWeatherDetails("Riga", "Latvia");
 
             result.Should().BeNull();
         }

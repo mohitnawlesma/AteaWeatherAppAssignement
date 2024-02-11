@@ -10,13 +10,16 @@ interface CityWeatherDetails {
 
 function App() {
     const [forecasts, setForecasts] = useState<CityWeatherDetails[]>();
+  //  const [cities, setCities] = useState<string[]>();
+   // const [selectedValue, setSelectedValue] = useState(null);
 
     useEffect(() => {
         populateWeatherData();
     }, []);
+  
 
     const contents = forecasts === undefined
-        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
+        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. </em></p>
         : <table className="table table-striped" aria-labelledby="tabelLabel">
             <thead>
                 <tr>
@@ -37,21 +40,38 @@ function App() {
                     </tr>
                 )}
             </tbody>
-        </table>;
+        </table>
+        ;
+
+    //const cityDropdown = cities === undefined ? "" :
+    //    <select onChange={handleChange}>
+    //        {cities.map((city) =>
+    //            <option key={city}>{city}</option>
+    //        )};
+    //    </select>
 
     return (
         <div>
             <h1 id="tabelLabel">Weather forecast</h1>
+         
             <p>This component demonstrates fetching data from the server.</p>
             {contents}
         </div>
     );
 
     async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
-        const data = await response.json();
-        setForecasts(data);
+       // if (selectedValue != null) {
+            const response = await fetch('weatherforecast?city=Berlin&country=DE');
+            const data = await response.json();
+            setForecasts(data);
+       // }
     }
+
+    //async function populatecities() {
+    //    const response = await fetch('weatherforecast/getcities');
+    //    const data = await response.json();
+    //    setCities(data);
+    //}
 }
 
 export default App;

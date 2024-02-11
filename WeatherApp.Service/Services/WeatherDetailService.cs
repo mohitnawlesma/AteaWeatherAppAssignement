@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
 using System.Net.Http.Json;
 using WeatherApp.DataAccessLayer.Interfaces;
 using WeatherApp.Domain.Dtos;
@@ -27,11 +26,11 @@ namespace WeatherApp.Service.Services
             _configuration = configuration; 
         }
 
-        public List<CityWeatherDetailDto>? GetCityWeatherDetails(string city)
+        public List<CityWeatherDetailDto>? GetCityWeatherDetails(string city, string country)
         {
             try
             {
-                var data = _repository.GetWeatherDetails(city);
+                var data = _repository.GetWeatherDetails(city, country);
                 if (data is not null && data.Any() & _mapper is not null)
                 {
                     return _mapper.Map<List<CityWeatherDetailDto>>(data);

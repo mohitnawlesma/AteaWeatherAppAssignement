@@ -55,7 +55,7 @@ namespace WeatherApp.DataAccessLayer.Test
 
             // ACT
             var ks = new WeatherDetailRepository(_logger,  _contextFactory);
-            var result = ks.GetWeatherDetails("Riga");
+            var result = ks.GetWeatherDetails("Riga","Latvia");
 
             // ASSERT
             result.Count.Should().Be(1);

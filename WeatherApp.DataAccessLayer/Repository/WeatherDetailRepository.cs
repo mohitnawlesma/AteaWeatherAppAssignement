@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Data;
+using System.Diagnostics.Tracing;
 using WeatherApp.DataAccessLayer.Interfaces;
 using WeatherApp.Domain.Entities;
 
@@ -16,7 +17,7 @@ namespace WeatherApp.DataAccessLayer.Repository
             _logger = logger;
             _contextFactory = contextFactory;
         }
-        public List<CityWeatherDetail> GetWeatherDetails(string city)
+        public List<CityWeatherDetail> GetWeatherDetails(string city, string country)
         {
             try
             {
@@ -24,7 +25,7 @@ namespace WeatherApp.DataAccessLayer.Repository
                 {
                     using (WeatherContext context = _contextFactory.CreateDbContext())
                     {
-                        return context.CityWeatherDetail.Where(p => p.City == city).ToList();
+                        return context.CityWeatherDetail.Where(p => p.City == city && p.Country == country).ToList();
                     }
                 }
             }

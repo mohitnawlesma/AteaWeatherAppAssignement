@@ -12,7 +12,7 @@ namespace WeatherApp.Domain.Entities
         public string? Country { get; set; }
         public decimal Longitude { get; set; }
         public decimal Latitude { get; set; }
-        public DateTime UpdatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
 
     } 
 }

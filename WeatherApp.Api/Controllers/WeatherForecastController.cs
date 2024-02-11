@@ -25,9 +25,9 @@ namespace WeatherApp.Api.Controllers
 
 
         [HttpGet(Name = "GetCityWeatherDetails")]
-        public List<CityWeatherDetailDto>? GetCityWeatherDetails()
+        public List<CityWeatherDetailDto>? GetCityWeatherDetails(string city, string country)
         {
-            return _service.GetCityWeatherDetails("Riga");
+            return _service.GetCityWeatherDetails(city,country);
         }
     }
 }
