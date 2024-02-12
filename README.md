@@ -15,4 +15,4 @@ countries - with periodical update 1/min.
 Notes:
 1. CityData.json contains city for which data is pulled from weather api and stored in db
 2. WeatherApp.DataFetcher Is a console app which will pull data from weather app and store in db. It can be configured as Azure function or a scheduled Task.
-3. 
+3. Was not able to code the react part as I have not worked in react before
